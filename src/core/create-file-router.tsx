@@ -1,5 +1,5 @@
 import { type RouteObject } from "react-router-dom";
-import { ComponentType, lazy, Suspense } from "react";
+import { type ComponentType, Suspense } from "react";
 import { PathParser } from "./path-parser";
 import { type RouteModule } from "../types";
 
@@ -23,10 +23,6 @@ export function createFileRouter(
     const cleanPath = filePath.replace(/^\.\/pages\//, "pages/");
     const routePath = PathParser.fileToRoute(cleanPath);
 
-    const LazyComponent = lazy(async () => {
-      const module = await importFn();
-      return { default: module.default };
-    });
 
     return {
       path: routePath,

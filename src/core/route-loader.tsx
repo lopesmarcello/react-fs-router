@@ -1,5 +1,5 @@
 import { type RouteObject } from "react-router-dom";
-import { Suspense, ComponentType } from "react";
+import { Suspense, type ComponentType } from "react";
 import { PathParser } from "./path-parser";
 import { type RouteModule } from "../types";
 
