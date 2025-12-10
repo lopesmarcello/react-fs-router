@@ -11,11 +11,11 @@ export class PathParser {
       .replace(/\/index$/, "")
       .replace(/^index$/, "")
       // Convert [param] to :param
-      .replace(/$$\.\.\.([^$$]+)\]/g, "*") // [...slug] -> *
-      .replace(/$$\[\.\.\.([^$$]+)\]\]/g, "*?") // [[...slug]] -> *? (optional catch-all)
-      .replace(/$$([^$$]+)\]/g, ":$1") // [id] -> :id
+      .replace(/\[\[\.\.\.([^\]]+)\]\]/g, "*?") // [[...slug]] -> *? (optional catch-all)
+      .replace(/\[\.\.\.([^\]]+)\]/g, "*") // [...slug] -> *
+      .replace(/\[([^\]]+)\]/g, ":$1") // [id] -> :id
       // Remove route groups (auth) -> auth becomes nothing
-      .replace(/$([^)]+)$\/?/g, "");
+      .replace(/\(([^)]+)\)\/?/g, "");
 
     // Ensure leading slash
     if (!route.startsWith("/")) {
