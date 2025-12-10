@@ -3,9 +3,10 @@ import {
   createBrowserRouter,
   createHashRouter,
   createMemoryRouter,
+  RouterProvider,
 } from "react-router-dom";
 import { RouteLoader } from "../core/route-loader";
-import { FileRouterProps, RouteModule } from "../types";
+import { type FileRouterProps, type RouteModule } from "../types";
 
 export function FileRouter({
   basePath = "/",
@@ -17,8 +18,10 @@ export function FileRouter({
     // This will be populated by Vite's import.meta.glob
     // @ts-ignore - This is injected by the build process
     const modules = import.meta.glob<RouteModule>("/src/pages/**/*.{tsx,jsx}");
+    console.log("Modules from import.meta.glob:", modules);
 
     const routes = RouteLoader.generateRoutes(modules, loading);
+    console.log("Generated routes:", routes);
 
     if (NotFound) {
       routes.push({

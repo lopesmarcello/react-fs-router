@@ -1,7 +1,7 @@
-import { RouteObject } from "react-router-dom";
+import { type RouteObject } from "react-router-dom";
 import { ComponentType, lazy, Suspense } from "react";
 import { PathParser } from "./path-parser";
-import { RouteModule } from "../types";
+import { type RouteModule } from "../types";
 
 interface CreateFileRouterOptions {
   loading?: ComponentType;

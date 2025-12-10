@@ -4,7 +4,7 @@ export class PathParser {
   static fileToRoute(filePath: string): string {
     let route = filePath
       // Remove pages prefix
-      .replace(/^pages\//, "")
+      .replace(/^\/src\/pages\//, "")
       // Remove file extension
       .replace(/\.(tsx?|jsx?)$/, "")
       // Convert index to root

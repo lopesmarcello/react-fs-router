@@ -1,7 +1,7 @@
-import { RouteObject } from "react-router-dom";
+import { type RouteObject } from "react-router-dom";
 import { Suspense, ComponentType } from "react";
 import { PathParser } from "./path-parser";
-import { RouteModule } from "../types";
+import { type RouteModule } from "../types";
 
 export class RouteLoader {
   // Generate routes from vite.meta.glob

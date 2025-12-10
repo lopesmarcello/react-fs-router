@@ -4,6 +4,6 @@ import { FileRouter } from "./components/FileRouter.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <FileRouter loading={<h1>loading...</h1>} notFound={<h1>Not found</h1>} />
+    <FileRouter />
   </StrictMode>,
 );
