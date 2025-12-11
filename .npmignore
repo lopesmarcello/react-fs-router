@@ -1,0 +1,32 @@
+# Source files
+src/pages/
+*.test.ts
+*.test.tsx
+*.spec.ts
+*.spec.tsx
+
+# Config files
+tsconfig.json
+vite.config.ts
+vitest.config.ts
+.eslintrc.js
+.prettierrc
+
+# Development
+node_modules/
+.vscode/
+.idea/
+*.log
+.DS_Store
+
+# Build artifacts (keep only dist/)
+*.tsbuildinfo
+
+# Git
+.git/
+.gitignore
+.github/
+
+
+# Testing
+coverage/

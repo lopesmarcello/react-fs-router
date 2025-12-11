@@ -36,7 +36,7 @@ export function FileRouter({
           : createBrowserRouter;
 
     return createRouter(routes, {
-      baseName: basePath,
+      basename: basePath,
     });
   }, [basePath, type, loading, NotFound]);
 

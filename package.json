@@ -1,19 +1,63 @@
 {
   "name": "react-fs-router",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
+  "version": "0.1.0",
+  "description": "Next.js-style file-based routing for React with react-router-dom integration",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
     "preview": "vite preview",
-    "test": "vitest"
+    "test": "vitest run",
+    "test:watch": "vitest"
+    "prepublishOnly": "npm run typecheck && npm run build"
   },
-  "dependencies": {
-    "react": "^19.2.0",
-    "react-dom": "^19.2.0",
-    "react-router-dom": "^7.10.1"
+  "keywords": [
+    "react",
+    "router",
+    "routing",
+    "file-based",
+    "filesystem",
+    "nextjs",
+    "react-router",
+    "react-router-dom",
+    "spa",
+    "file-system-routing"
+  ],
+  "author": {
+    "name": "Marcello Lopes",
+    "email": "marcellolopesdev@gmail.com",
+    "url": "https://github.com/lopesmarcello"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lopesmarcello/react-fs-router.git"
+  },
+  "bugs": {
+    "url": "https://github.com/lopesmarcello/react-fs-router/issues"
+  },
+  "homepage": "https://github.com/lopesmarcello/react-fs-router#readme",
+  "license": "MIT",
+  "peerDependencies": {
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0",
+    "react-router-dom": ">=7.10.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",
@@ -31,5 +75,9 @@
     "typescript-eslint": "^8.46.4",
     "vite": "^7.2.4",
     "vitest": "^4.0.15"
+  },
+  "engines":{
+    "node": ">= 18.0.0",
+    "npm": ">= 9.0.0",
   }
 }
