@@ -10,10 +10,9 @@ Next.js-style file-based routing for React with react-router-dom integration.
 - 🗂️ **File-based routing** - Just like Next.js
 - 🔄 **Dynamic routes** - Support for `[param]` and `[...slug]` patterns
 - 📦 **Zero config** - Works out of the box
-- 🎨 **Layouts** - Per-route layouts with nesting support
-- ⚡ **Code splitting** - Automatic lazy loading
+- 🎨 **Layouts** - Per-route layouts with nesting support [WIP]
+- ⚡ **Code splitting** - Automatic lazy loading [WIP]
 - 🎯 **Type-safe** - Full TypeScript support
-- 🪝 **Familiar hooks** - useRouter, useParams, and more
 - 🔌 **react-router-dom** - Built on the industry standard
 
 ## Installation
