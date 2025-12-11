@@ -25,7 +25,7 @@
     "typecheck": "tsc --noEmit",
     "preview": "vite preview",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
     "prepublishOnly": "npm run typecheck && npm run build"
   },
   "keywords": [
@@ -78,6 +78,6 @@
   },
   "engines":{
     "node": ">= 18.0.0",
-    "npm": ">= 9.0.0",
+    "npm": ">= 9.0.0"
   }
 }
