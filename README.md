@@ -19,11 +19,11 @@ Next.js-style file-based routing for React with react-router-dom integration.
 ## Installation
 
 ```bash
-npm install react-fs-router react-router-dom
+npm install react-fs-router-dom react-router-dom
 # or
-yarn add react-fs-router react-router-dom
+yarn add react-fs-router-dom react-router-dom
 # or
-pnpm add react-fs-router react-router-dom
+pnpm add react-fs-router-dom react-router-dom
 ```
 
 ## Quick start 
