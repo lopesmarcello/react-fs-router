@@ -17,7 +17,8 @@ export function FileRouter({
   const router = useMemo(() => {
     // This will be populated by Vite's import.meta.glob
     // @ts-ignore - This is injected by the build process
-    const modules = import.meta.glob<RouteModule>("/src/pages/**/*.{tsx,jsx}");
+    // project/node_modules/react-fs-router-dom/
+    const modules = import.meta.glob<RouteModule>("../../src/pages/**/*.{tsx,jsx}");
 
     const routes = RouteLoader.generateRoutes(modules, loading);
 
