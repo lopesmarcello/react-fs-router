@@ -1,6 +1,6 @@
 {
   "name": "react-fs-router",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Next.js-style file-based routing for React with react-router-dom integration",
   "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
