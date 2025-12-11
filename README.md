@@ -1,8 +1,8 @@
-# react-fs-router
+# react-fs-router-dom
 
 Next.js-style file-based routing for React with react-router-dom integration.
 
-[![npm version](https://badge.fury.io/js/react-fs-router.svg)](https://www.npmjs.com/package/react-fs-router)
+[![npm version](https://badge.fury.io/js/react-fs-router-dom.svg)](https://www.npmjs.com/package/react-fs-router-dom)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## Features
@@ -29,7 +29,6 @@ pnpm add react-fs-router-dom react-router-dom
 ## Quick start 
 
 ### 1. Create your pages
-```
 
 ```
 src/
@@ -41,13 +40,12 @@ src/
 │       └── [slug].tsx     -> /blog/:slug
 └── App.tsx
 ```
-```
 
 ### 2. Use FileRouter in your app 
 
 ```tsx
 // App.tsx
-import { FileRouter } from 'react-fs-router';
+import { FileRouter } from 'react-fs-router-dom';
 
 function App() {
   return <FileRouter />;
