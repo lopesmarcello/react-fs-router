@@ -5,8 +5,9 @@ import {
   createMemoryRouter,
   RouterProvider,
 } from "react-router-dom";
-import { RouteLoader } from "../core/route-loader";
+// import { RouteLoader } from "../core/route-loader";
 import { type FileRouterProps, type RouteModule } from "../types";
+import { routes } from 'virtual:react-fs-router-dom/routes'
 
 export function FileRouter({
   basePath = "/",
@@ -20,7 +21,7 @@ export function FileRouter({
     // project/node_modules/react-fs-router-dom/
     const modules = import.meta.glob<RouteModule>("../../src/pages/**/*.{tsx,jsx}");
 
-    const routes = RouteLoader.generateRoutes(modules, loading);
+    //     const routes = RouteLoader.generateRoutes(modules, loading);
 
     if (NotFound) {
       routes.push({

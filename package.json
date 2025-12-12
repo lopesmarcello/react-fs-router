@@ -1,24 +1,29 @@
 {
   "name": "react-fs-router-dom",
-  "version": "0.1.1",
+  "version": "0.2.5",
   "description": "Next.js-style file-based routing for React with react-router-dom integration",
   "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "exports": {
-".": {
-      "types": "./dist/index.d.ts",
-      "import": {
-        "types": "./dist/index.d.mts",
-        "default": "./dist/index.mjs"
+      ".": {
+        "types": "./dist/index.d.ts",
+        "import": "./dist/index.mjs",
+        "require": "./dist/index.cjs"
       },
-      "require": {
-        "types": "./dist/index.d.cts",
-        "default": "./dist/index.cjs"
+      "./vite-plugin": {
+        "types": "./dist/vite-plugin.d.ts",
+        "import": "./dist/vite-plugin.mjs",
+        "require": "./dist/vite-plugin.cjs"
       }
     },
-    "./package.json": "./package.json"
-  },
+    "typesVersions": {
+      "*": {
+        "vite-plugin": [
+          "dist/vite-plugin.d.ts"
+        ]
+      }
+    },
   "files": [
     "dist",
     "README.md",
@@ -26,7 +31,9 @@
   ],
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build:lib": "vite build",
+    "build:plugin": "vite build --mode plugin",
+    "build": "npm run build:lib && npm run build:plugin",
     "build:types": "tsc --emitDeclarationOnly --outDir dist",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
@@ -76,6 +83,7 @@
     "eslint": "^9.39.1",
     "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-react-refresh": "^0.4.24",
+    "fast-glob": "^3.3.3",
     "globals": "^16.5.0",
     "jsdom": "^27.3.0",
     "typescript": "~5.9.3",

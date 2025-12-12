@@ -1,61 +1,48 @@
-/// <reference types="vitest/config" />
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-import dts from 'vite-plugin-dts'
-import { resolve } from 'path'
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import dts from 'vite-plugin-dts';
+import { resolve } from 'path';
 
-// https://vite.dev/config/
-export default defineConfig({
-  plugins: [react(),
-  dts({
-    // Generate .d.ts files
-    insertTypesEntry: true,
-    // Include all files from src
-    include: ['src/**/*'],
-    // Exclude test files
-    exclude: ['**/*.test.ts', '**/*.test.tsx', '**/*.spec.ts', '**/*.spec.tsx'],
-    // Output directory
-    outDir: 'dist',
-    // Generate source maps for types
-    rollupTypes: true,
-    // Emit declaration files
-    staticImport: true,
-    // Log level
-    logLevel: 'error',
-  })],
-  test: {
-    environment: 'jsdom',
-    globals: true,
-    setupFiles: './vitest.setup.ts',
-    include: ['**/*.test.ts'],
-  },
-  build: {
-    lib: {
-      entry: resolve(__dirname, 'src/index.ts'),
-      name: 'ReactFsRouterDom',
-      formats: ['es', 'cjs'],
-      fileName: (format) => `index.${format === 'es' ? 'mjs' : 'cjs'}`,
+export default defineConfig(({ mode }) => {
+  const isPluginMode = mode === 'plugin';
+
+  return {
+    plugins: [
+      react(),
+      dts({ insertTypesEntry: true }),
+    ],
+    optimizeDeps: {
+      exclude: ['react-fs-router-dom'],  // Skip pre-bundling for your lib
     },
-    rollupOptions: {
-      // Externalize peer dependencies
-      external: ['react', 'react-dom', 'react/jsx-runtime', 'react-router-dom'],
-      output: {
-        globals: {
-          react: 'React',
-          'react-dom': 'ReactDOM',
-          'react/jsx-runtime': 'react/jsx-runtime',
-          'react-router-dom': 'ReactRouterDOM',
+    resolve: {
+      preserveSymlinks: true,  // Sometimes helps with link-like setups
+    },
+    build: {
+      lib: {
+        entry: isPluginMode
+          ? resolve(__dirname, 'src/vite-plugin.ts')
+          : resolve(__dirname, 'src/index.ts'),
+        name: isPluginMode ? 'ReactFsRouterPlugin' : 'ReactFsRouterDom',
+        fileName: (format, entryName) => `${entryName}.${format === 'es' ? 'mjs' : 'cjs'}`,
+        formats: isPluginMode ? ['es', 'cjs'] : ['es', 'umd'],  // Browser-friendly for main lib if needed
+      },
+      ssr: isPluginMode,  // True for plugin (Node target), false for main lib (browser)
+      target: isPluginMode ? 'node16' : 'esnext',  // Node version for plugin, browser for lib
+      minify: isPluginMode ? false : 'esbuild',  // Optional: Disable minify for plugin to ease debugging
+      rollupOptions: {
+        external: [
+          'react', 'react-dom', 'react-router-dom', 'fast-glob',
+          ...(isPluginMode ? [/^node:.*/, 'os', 'path', 'fs', 'util', 'fast-glob'] : []),  // Externalize Node stuff only for plugin
+          'virtual:react-fs-router-dom/routes',  // As before
+        ],
+        output: {
+          globals: {
+            react: 'React',
+            'react-dom': 'ReactDOM',
+            'react-router-dom': 'ReactRouterDOM',
+          },
         },
-        // Preserve module structure for better tree-shaking
-        preserveModules: false,
-        exports: 'named',
       },
     },
-    // Generate source maps
-    sourcemap: true,
-    // Target modern browsers
-    target: 'esnext',
-    // Minify
-    minify: false,
-  },
-})
+  };
+});
