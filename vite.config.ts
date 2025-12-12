@@ -15,6 +15,10 @@ export default defineConfig(({ mode }) => {
       exclude: ['react-fs-router-dom'],  // Skip pre-bundling for your lib
     },
     resolve: {
+      alias: {
+        'react-fs-router-dom': resolve(__dirname, '../react-fs-router/src/index.ts'),  // Point to lib's src for dev (enables HMR on lib changes)
+        // Alternatively, point to built dist: resolve(__dirname, '../react-fs-router/dist/index.mjs')
+      },
       preserveSymlinks: true,  // Sometimes helps with link-like setups
     },
     build: {

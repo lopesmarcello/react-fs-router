@@ -1,6 +1,6 @@
 {
   "name": "react-fs-router-dom",
-  "version": "0.2.5",
+  "version": "0.2.7",
   "description": "Next.js-style file-based routing for React with react-router-dom integration",
   "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
@@ -15,13 +15,6 @@
         "types": "./dist/vite-plugin.d.ts",
         "import": "./dist/vite-plugin.mjs",
         "require": "./dist/vite-plugin.cjs"
-      }
-    },
-    "typesVersions": {
-      "*": {
-        "vite-plugin": [
-          "dist/vite-plugin.d.ts"
-        ]
       }
     },
   "files": [
